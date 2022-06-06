@@ -2,19 +2,25 @@
 #define PRIORITY_QUEUE_IPRIORITYQUEUE_HPP
 
 #include <cstddef>
+#include <memory>
+#include <optional>
+#include "IKey.hpp"
 
-namespace priority_queue {
+namespace priority_queues {
 
-    template<class T>
+
+    template<typename T, typename K>
     class IPriorityQueue {
     public:
-        virtual bool push(std::size_t key, T *value) = 0;
+        virtual bool push(std::shared_ptr<IKey<K>> key, std::shared_ptr<T> value) = 0;
 
-        virtual T *top() = 0;
+        virtual std::shared_ptr<T> top() = 0;
 
-        virtual T *pop() = 0;
+        virtual std::shared_ptr<T> pop() = 0;
 
-        virtual bool decreaseKey(std::size_t key_to_decrease, std::size_t new_key_value) = 0;
+        virtual void decreaseKey(std::shared_ptr<IKey<K>> key_to_decrease, std::shared_ptr<IKey<K>> new_key) = 0;
+
+        virtual std::optional<std::shared_ptr<T>> get(std::shared_ptr<IKey<K>> key_to_find) = 0;
     };
 }
 
