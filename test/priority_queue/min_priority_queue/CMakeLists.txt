@@ -3,11 +3,11 @@ include(GoogleTest)
 set(suit_name min_priority_queue)
 
 set(tests
-        min_prio_q_decrease_key.cpp
-        min_prio_q_get.cpp
-        min_prio_q_pop.cpp
-        min_prio_q_push.cpp
-        min_prio_q_top.cpp
+        decrease_key.cpp
+        get.cpp
+        pop.cpp
+        push.cpp
+        top.cpp
         )
 
 foreach (file ${tests})

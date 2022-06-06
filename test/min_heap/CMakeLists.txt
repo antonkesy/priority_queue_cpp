@@ -3,12 +3,12 @@ include(GoogleTest)
 set(suit_name min_binary_heap)
 
 set(tests
-        min_heap_decrease_key.cpp
-        min_heap_get.cpp
-        min_heap_indexof.cpp
-        min_heap_pop.cpp
-        min_heap_push.cpp
-        min_heap_top.cpp
+        decrease_key.cpp
+        get.cpp
+        index_of.cpp
+        pop.cpp
+        push.cpp
+        top.cpp
         )
 
 foreach (file ${tests})
