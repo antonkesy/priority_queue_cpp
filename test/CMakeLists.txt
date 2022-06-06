@@ -11,3 +11,4 @@ FetchContent_MakeAvailable(googletest)
 
 add_subdirectory(min_heap)
 add_subdirectory(priority_queue/min_priority_queue)
+add_subdirectory(utility/integer_key)

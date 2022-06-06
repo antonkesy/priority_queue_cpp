@@ -19,11 +19,11 @@ namespace priority_queues {
         }
 
         bool operator<(IKey<long> &other) override {
-            return compareTo(other) > 0;
+            return compareTo(other) < 0;
         }
 
         bool operator>(IKey<long> &other) override {
-            return compareTo(other) < 0;
+            return compareTo(other) > 0;
         }
 
     private:

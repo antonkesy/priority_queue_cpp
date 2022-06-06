@@ -4,21 +4,10 @@
 #include <cstddef>
 #include <memory>
 #include <optional>
+#include "IKey.hpp"
 
 namespace priority_queues {
 
-    template<typename K>
-    class IKey {
-    public:
-        virtual int compareTo(IKey &other) = 0;
-
-        virtual K getValue() = 0;
-
-        virtual bool operator<(IKey<K> &other) = 0;
-
-        virtual bool operator>(IKey<K> &other) = 0;
-
-    };
 
     template<typename T, typename K>
     class IPriorityQueue {
