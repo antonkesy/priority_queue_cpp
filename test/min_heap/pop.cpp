@@ -1,5 +1,6 @@
 #include "../../include/minimum/collections/binary_heap/BinaryMinHeap.hpp"
 #include <cstdlib>
+#include <gtest/gtest.h>
 #include "../utility/IntegerKey.hpp"
 
 using namespace priority_queues;
@@ -8,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-int pop_order() {
+TEST(POP, ORDER) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -23,13 +24,6 @@ int pop_order() {
 
     for (int i = 0; i < capacity - 1; ++i) {
         auto min = min_heap.pop();
-        if (*min != i)
-            return EXIT_FAILURE;
+        EXPECT_EQ(*min, i);
     }
-
-    return EXIT_SUCCESS;
-}
-
-int main() {
-    return pop_order();
 }

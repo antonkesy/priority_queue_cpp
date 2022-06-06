@@ -1,5 +1,6 @@
 #include "../../include/minimum/collections/binary_heap/BinaryMinHeap.hpp"
 #include <cstdlib>
+#include <gtest/gtest.h>
 #include "../utility/IntegerKey.hpp"
 
 using namespace priority_queues;
@@ -8,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-int get_insert_reverse() {
+TEST(Top, Insert_Reverse) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -23,16 +24,12 @@ int get_insert_reverse() {
 
     for (int i = 0; i < capacity - 1; ++i) {
         min_heap.pop();
-
-        int top_value = *min_heap.top();
-        if (top_value != (i + 1))
-            return EXIT_FAILURE;
+        EXPECT_EQ(*min_heap.top(), (i + 1));
     }
 
-    return EXIT_SUCCESS;
 }
 
-int top_insert() {
+TEST(Top, Insert_Order) {
     const size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -43,13 +40,6 @@ int top_insert() {
         auto key = make_shared<IntegerKey>(capacity - i);
         auto value = make_shared<int>(values[i]);
         min_heap.push(key, value);
-
-        if (*min_heap.top() != values[i])
-            return EXIT_FAILURE;
+        EXPECT_EQ(*min_heap.top(), values[i]);
     }
-    return EXIT_SUCCESS;
-}
-
-int main() {
-    return top_insert() & get_insert_reverse();
 }

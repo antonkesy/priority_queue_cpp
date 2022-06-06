@@ -1,6 +1,7 @@
 #include "../../include/minimum/collections/binary_heap/BinaryMinHeap.hpp"
-#include "../utility/IntegerKey.hpp"
 #include <cstdlib>
+#include <gtest/gtest.h>
+#include "../utility/IntegerKey.hpp"
 
 using namespace priority_queues::minimum;
 using namespace priority_queues;
@@ -8,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-int reach_capacity() {
+TEST(PUSH, CAPACITY) {
     const int capacity = 5U;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -17,21 +18,12 @@ int reach_capacity() {
     for (int i = 0; i < capacity; ++i) {
         auto key = make_shared<IntegerKey>(i);
         auto value = make_shared<int>(values[i]);
-        if (!min_heap.push(key, value))
-            return EXIT_FAILURE;
+        EXPECT_TRUE(min_heap.push(key, value));
     }
     auto key = make_shared<IntegerKey>(0);
     auto value = make_shared<int>(values[capacity]);
-    if (min_heap.push(key, value))
-        return EXIT_FAILURE;
+    EXPECT_FALSE(min_heap.push(key, value));
 
     key = make_shared<IntegerKey>(capacity);
-    if (min_heap.push(key, value))
-        return EXIT_FAILURE;
-
-    return EXIT_SUCCESS;
-}
-
-int main() {
-    return reach_capacity();
+    EXPECT_FALSE(min_heap.push(key, value));
 }

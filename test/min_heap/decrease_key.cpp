@@ -1,6 +1,7 @@
 #include "../../include/minimum/collections/binary_heap/BinaryMinHeap.hpp"
 #include "../utility/IntegerKey.hpp"
 #include <cstdlib>
+#include <gtest/gtest.h>
 
 using namespace priority_queues;
 using namespace priority_queues::minimum;
@@ -8,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-int decrease_last() {
+TEST(Decrease_Key, Decrease_Last) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -26,18 +27,8 @@ int decrease_last() {
         auto key = make_shared<IntegerKey>(new_key_value);
         auto biggest_key = make_shared<IntegerKey>(capacity - i - 1);
         auto index = min_heap.index_of(biggest_key);
-        if (!index.has_value())
-            return EXIT_FAILURE;
+        EXPECT_TRUE(index.has_value());
         min_heap.decreaseKey(index.value(), key);
-        int top_value = *min_heap.top();
-        if (top_value != (capacity - i - 1)) {
-            return EXIT_FAILURE;
-        }
+        EXPECT_EQ(*min_heap.top(), (capacity - i - 1));
     }
-
-    return EXIT_SUCCESS;
-}
-
-int main() {
-    return decrease_last();
 }
