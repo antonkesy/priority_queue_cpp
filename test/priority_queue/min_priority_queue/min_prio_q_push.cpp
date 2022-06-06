@@ -1,19 +1,22 @@
 #include <cstdlib>
 #include <gtest/gtest.h>
+#include <array>
 #include "../../../include/minimum/MinPriorityQueue.hpp"
 #include "../../utility/IntegerKey.hpp"
 
-using namespace priority_queues::minimum;
-using namespace priority_queues;
-using std::make_shared;
-using std::array;
-using std::size_t;
+using IntegerKey = priority_queues::IntegerKey;
+template<typename T, typename K>
+using MinPriorityQueue = priority_queues::MinPriorityQueue<T, K>;
+
 
 TEST(Min_Priority_Queue, Push_Capacity) {
+    using std::make_shared;
+    using std::size_t;
+
     const int capacity = 5U;
     MinPriorityQueue<int, long> queue(capacity);
 
-    array<int, capacity> values{};
+    std::array<int, capacity> values{};
 
     for (int i = 0; i < capacity; ++i) {
         auto key = make_shared<IntegerKey>(i);

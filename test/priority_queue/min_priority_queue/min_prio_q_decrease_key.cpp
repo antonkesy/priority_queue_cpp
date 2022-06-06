@@ -1,18 +1,22 @@
 #include <cstdlib>
 #include <gtest/gtest.h>
+#include <array>
 #include "../../../include/minimum/MinPriorityQueue.hpp"
 #include "../../utility/IntegerKey.hpp"
 
-using namespace priority_queues;
-using std::make_shared;
-using std::array;
-using std::size_t;
+using IntegerKey = priority_queues::IntegerKey;
+template<typename T, typename K>
+using MinPriorityQueue = priority_queues::MinPriorityQueue<T, K>;
+
 
 TEST(Min_Priority_Queue, Decrease_Key_Last) {
+    using std::make_shared;
+    using std::size_t;
+
     constexpr size_t capacity = 0xFF;
     MinPriorityQueue<int, long> queue(capacity);
 
-    array<int, capacity> values{};
+    std::array<int, capacity> values{};
 
     for (size_t i = 0U; i < capacity; ++i) {
         values[i] = (int) i;

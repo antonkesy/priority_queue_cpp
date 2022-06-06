@@ -87,6 +87,7 @@ namespace priority_queues::minimum {
         size_t capacity_;
 
         void heapify(size_t index) {
+            //FIXME
             size_t left = left_index(index);
             size_t right = right_index(index);
             size_t smallest = index;
