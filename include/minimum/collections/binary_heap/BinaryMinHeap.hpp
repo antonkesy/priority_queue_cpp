@@ -6,7 +6,7 @@ namespace priority_queues::minimum {
     template<typename T, typename K>
     class BinaryMinHeap : public IMinimumCollection<T, K> {
     public:
-        explicit BinaryMinHeap(const std::size_t &capacity) : capacity_(capacity), size_(0U) {
+        explicit BinaryMinHeap(const std::size_t &capacity) : size_(0U), capacity_(capacity) {
             elements_.resize(capacity_);
             for (auto &item: elements_)
                 item = std::make_unique<Node>();
