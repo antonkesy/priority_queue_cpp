@@ -1,10 +1,18 @@
 include(GoogleTest)
 
-file(GLOB files "*.cpp")
-foreach (file ${files})
-    string(REGEX REPLACE ".*/" "" file_path ${file})
-    string(REGEX REPLACE ".c$" "" file_name ${file_path})
-    add_executable(${file_name} ${file_path} ${test_essentials})
-    target_link_libraries(${file_name} gtest_main)
-    gtest_discover_tests(${file_name})
+set(suit_name min_priority_queue)
+
+set(tests
+        min_prio_q_decrease_key.cpp
+        min_prio_q_get.cpp
+        min_prio_q_pop.cpp
+        min_prio_q_push.cpp
+        min_prio_q_top.cpp
+        )
+
+foreach (file ${tests})
+    set(test_name ${file}_test_${suit_name})
+    add_executable(${test_name} ${file})
+    target_link_libraries(${test_name} gtest_main)
+    gtest_discover_tests(${test_name})
 endforeach ()
