@@ -10,7 +10,7 @@ using std::array;
 using std::size_t;
 
 
-TEST(Index_Of, Insert_Reverse) {
+TEST(Min_Heap, Index_Of_Insert_Reverse) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<size_t, long> min_heap(capacity);
 

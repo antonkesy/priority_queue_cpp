@@ -9,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-TEST(POP, ORDER) {
+TEST(Min_Heap, Pop_Order) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 

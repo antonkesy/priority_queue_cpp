@@ -9,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-TEST(Top, Insert_Reverse) {
+TEST(Min_Heap, Top_Insert_Reverse) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -29,7 +29,7 @@ TEST(Top, Insert_Reverse) {
 
 }
 
-TEST(Top, Insert_Order) {
+TEST(Min_Heap, Top_Insert_Order) {
     const size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 

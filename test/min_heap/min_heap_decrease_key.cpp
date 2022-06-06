@@ -1,7 +1,7 @@
 #include "../../include/minimum/collections/binary_heap/BinaryMinHeap.hpp"
-#include "../utility/IntegerKey.hpp"
 #include <cstdlib>
 #include <gtest/gtest.h>
+#include "../utility/IntegerKey.hpp"
 
 using namespace priority_queues;
 using namespace priority_queues::minimum;
@@ -9,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-TEST(Decrease_Key, Decrease_Last) {
+TEST(Min_Heap, Decrease_Key_Last) {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 

@@ -9,7 +9,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-TEST(PUSH, CAPACITY) {
+TEST(Min_Heap, Push_Capacity) {
     const int capacity = 5U;
     BinaryMinHeap<int, long> min_heap(capacity);
 
