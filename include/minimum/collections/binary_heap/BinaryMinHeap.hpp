@@ -64,8 +64,8 @@ namespace priority_queues::minimum {
             return root_value;
         }
 
-        void decreaseKey(std::size_t &index_decrease, std::shared_ptr<IKey<K>> new_key_value) override {
-            elements_[index_decrease]->key = new_key_value;
+        void decreaseKey(std::size_t &index_decrease, std::shared_ptr<IKey<K>> new_key) override {
+            elements_[index_decrease]->key = new_key;
             if (size_ <= 1) return;
 
             while (index_decrease != 0 &&

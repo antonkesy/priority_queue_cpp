@@ -19,7 +19,7 @@ namespace priority_queues::minimum {
 
         virtual std::shared_ptr<T> pop() = 0;
 
-        virtual void decreaseKey(std::size_t &key_to_decrease, std::shared_ptr<IKey<K>> new_key_value) = 0;
+        virtual void decreaseKey(std::size_t &key_to_decrease, std::shared_ptr<IKey<K>> new_key) = 0;
 
         virtual std::optional<std::size_t> index_of(std::shared_ptr<IKey<K>> key_to_find) = 0;
 
