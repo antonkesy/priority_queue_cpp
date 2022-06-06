@@ -10,3 +10,4 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_subdirectory(min_heap)
+add_subdirectory(priority_queue/min_priority_queue)

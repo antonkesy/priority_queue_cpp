@@ -3,32 +3,35 @@
 
 #include <cstddef>
 #include <memory>
+#include <optional>
 
 namespace priority_queues {
 
-    template<typename T>
+    template<typename K>
     class IKey {
     public:
         virtual int compareTo(IKey &other) = 0;
 
-        virtual T getValue() = 0;
+        virtual K getValue() = 0;
 
-        virtual bool operator<(IKey<T> &other) = 0;
+        virtual bool operator<(IKey<K> &other) = 0;
 
-        virtual bool operator>(IKey<T> &other) = 0;
+        virtual bool operator>(IKey<K> &other) = 0;
 
     };
 
     template<typename T, typename K>
     class IPriorityQueue {
     public:
-        virtual bool push(IKey<K> &key, T &value) = 0;
+        virtual bool push(std::shared_ptr<IKey<K>> key, std::shared_ptr<T> value) = 0;
 
         virtual std::shared_ptr<T> top() = 0;
 
         virtual std::shared_ptr<T> pop() = 0;
 
-        virtual void decreaseKey(IKey<K> &key_to_decrease, IKey<K> &newKey) = 0;
+        virtual void decreaseKey(std::shared_ptr<IKey<K>> key_to_decrease, std::shared_ptr<IKey<K>> new_key) = 0;
+
+        virtual std::optional<std::shared_ptr<T>> get(std::shared_ptr<IKey<K>> key_to_find) = 0;
     };
 }
 

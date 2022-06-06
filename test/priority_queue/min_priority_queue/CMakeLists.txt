@@ -1,0 +1,10 @@
+include(GoogleTest)
+
+file(GLOB files "*.cpp")
+foreach (file ${files})
+    string(REGEX REPLACE ".*/" "" file_path ${file})
+    string(REGEX REPLACE ".c$" "" file_name ${file_path})
+    add_executable(${file_name} ${file_path} ${test_essentials})
+    target_link_libraries(${file_name} gtest_main)
+    gtest_discover_tests(${file_name})
+endforeach ()
