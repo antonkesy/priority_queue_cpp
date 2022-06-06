@@ -22,6 +22,8 @@ namespace priority_queues::minimum {
         virtual void decreaseKey(std::size_t &key_to_decrease, std::shared_ptr<IKey<K>> new_key_value) = 0;
 
         virtual std::optional<std::size_t> index_of(std::shared_ptr<IKey<K>> key_to_find) = 0;
+
+        virtual std::optional<std::shared_ptr<T>> get(std::shared_ptr<IKey<K>> key_to_find) = 0;
     };
 
 }

@@ -8,7 +8,7 @@ using std::make_shared;
 using std::array;
 using std::size_t;
 
-int top_remove() {
+int get_insert_reverse() {
     constexpr size_t capacity = 0xFF;
     BinaryMinHeap<int, long> min_heap(capacity);
 
@@ -51,5 +51,5 @@ int top_insert() {
 }
 
 int main() {
-    return top_insert() & top_remove();
+    return top_insert() & get_insert_reverse();
 }

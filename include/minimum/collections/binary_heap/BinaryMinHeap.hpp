@@ -22,6 +22,12 @@ namespace priority_queues::minimum {
             return std::nullopt;
         }
 
+        std::optional<std::shared_ptr<T>> get(std::shared_ptr<IKey<K>> key_to_find) override {
+            auto index = index_of(key_to_find);
+            if (index == std::nullopt) return std::nullopt;
+            return {elements_[index.value()]->value};
+        }
+
         bool push(std::shared_ptr<IKey<K>> key, std::shared_ptr<T> value) override {
             if (capacity_ == size_) return false;
 
@@ -62,14 +68,8 @@ namespace priority_queues::minimum {
             elements_[index_decrease]->key = new_key_value;
             if (size_ <= 1) return;
 
-            if (size_ > 3) {
-                auto parent = elements_[parent_index(index_decrease)]->key;
-                auto decreasee = elements_[index_decrease]->key;
-                int comp = parent->compareTo(*decreasee);
-                int r = comp;
-            }
             while (index_decrease != 0 &&
-                   elements_[parent_index(index_decrease)]->key->compareTo(*elements_[index_decrease]->key) > 0) {
+                   (*elements_[parent_index(index_decrease)]->key) < (*elements_[index_decrease]->key)) {
 
                 std::swap(elements_[index_decrease], elements_[parent_index(index_decrease)]);
                 index_decrease = parent_index(index_decrease);
